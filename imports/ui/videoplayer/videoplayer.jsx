@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import Video from './video.jsx';
+import Videowrapper from './videowrapper.jsx';
 import VideoControls from './videocontrols.jsx';
 import Progressbar from './progressbar.jsx';
 
@@ -10,7 +10,7 @@ export default class Videoplayer extends Component {
     return (
       <div className="container">
         <h1 className="room-name">This is the Videoplayer.</h1>
-        <Video />
+        <Videowrapper />
         <VideoControls />
         <Progressbar />
       </div>
