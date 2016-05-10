@@ -4,8 +4,21 @@ import React, { Component, PropTypes } from 'react';
 export default class VideoControls extends Component {
   render() {
     return (
-      <div className="container">
-        <h3>The VideoControls.</h3>
+      <div className="video-controls">
+
+        <div className="controls-base controls-left">
+          <div className="icon icon-video-pause"></div>
+          <div className="video-time">05:30 | 10:00</div>
+        </div>
+
+        <div className="controls-base controls-right">
+          <div className="icon icon-video-volume-up"></div>
+          <div className="icon icon-video-settings"></div>
+          <div className="icon icon-video-fullscreen"></div>
+        </div>
+
+        <div className="bottom-gradient">
+        </div>
       </div>
     );
   }
