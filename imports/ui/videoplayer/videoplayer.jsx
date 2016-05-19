@@ -10,7 +10,7 @@ export default class Videoplayer extends Component {
       super(props, context);
 
       this.state = {
-        playing: true,
+        playing: false,
         url: 'https://www.youtube.com/watch?v=99-n42Xb6NQ',
       };
     };
