@@ -22,11 +22,11 @@ class App extends Component {
     };
 
   componentDidMount() {
-    appStore.addChangeListener(this._onChange);
+    appStore.addChangeListener(this._onChange.bind(this));
   }
 
   componentWillUnmount() {
-    appStore.removeChangeListener(this._onChange);
+    appStore.removeChangeListener(this._onChange.bind(this));
   }
 
   render() {
