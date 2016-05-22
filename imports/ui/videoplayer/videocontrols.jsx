@@ -22,7 +22,7 @@ export default class VideoControls extends Component {
         <div className="controls-base controls-left">
           <div
           className={ 'icon ' + (this.props.playing ? 'icon-video-pause' : 'icon-video-play') }
-          onClick={ appActions.playPause }
+          onClick={ appActions.togglePlay }
           />
           <div className="video-time">
             <Duration

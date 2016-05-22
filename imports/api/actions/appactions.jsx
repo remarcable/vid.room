@@ -1,9 +1,16 @@
 import appDispatcher from '../dispatcher/appdispatcher';
 
 let appActions = {
-  playPause() {
+  togglePlay() {
     appDispatcher.dispatch({
       actionType: 'toggle-play',
+    });
+  },
+
+  setPlay(playing) {
+    appDispatcher.dispatch({
+      actionType: 'set-play',
+      playing: playing,
     });
   },
 
@@ -28,8 +35,12 @@ let appActions = {
     return;
   },
 
-  onProgress(state) {
-    return;
+  onProgress(e) {
+    appDispatcher.dispatch({
+      actionType: 'set-progress',
+      progress: e.played,
+      loaded: e.loaded,
+    });
   },
 };
 
