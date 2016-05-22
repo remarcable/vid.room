@@ -3,25 +3,31 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import appStore from '../api/stores/stores';
+
 import Videoplayer from './videoplayer/videoplayer.jsx';
 import Roomsettings from './roomsettings/roomsettings.jsx';
 import Chat from './chat/chat.jsx';
+
+function getAppStateFromStore() {
+  console.log('getting state from store');
+  return appStore.getState();
+}
 
 // App component - represents the whole app
 class App extends Component {
   constructor(props, context) {
       super(props, context);
-
-      this.state = {
-        url: 'https://www.youtube.com/watch?v=DOH3eWW_EsY',
-        playing: false,
-        played: 0.2,
-        loaded: 0.7,
-        duration: 320, // seconds
-        volume: 0.8,
-        roomname: 'room-name',
-      };
+      this.state = getAppStateFromStore();
     };
+
+  componentDidMount() {
+    appStore.addChangeListener(this._onChange);
+  }
+
+  componentWillUnmount() {
+    appStore.removeChangeListener(this._onChange);
+  }
 
   render() {
     return (
@@ -31,6 +37,12 @@ class App extends Component {
         <Chat />
       </div>
     );
+  }
+
+  _onChange() {
+    console.log('changeEvent!');
+    console.log('this is:', this);
+    this.setState(getAppStateFromStore());
   }
 }
 

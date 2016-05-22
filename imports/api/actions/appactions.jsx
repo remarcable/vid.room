@@ -1,4 +1,4 @@
-import { appDispatcher } from '../dispatcher/appdispatcher';
+import appDispatcher from '../dispatcher/appdispatcher';
 
 let appActions = {
   playPause() {
@@ -32,4 +32,5 @@ let appActions = {
     return;
   },
 };
+
 window.appActions = appActions;
