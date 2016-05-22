@@ -8,7 +8,7 @@ let _globalAppState = {
   playing: false,
   played: 0,
   loaded: 0,
-  duration: 320, // seconds
+  duration: 0, // seconds
   volume: 0.8,
   roomname: 'room-name',
 };
@@ -49,6 +49,10 @@ appDispatcher.register(function (action) {
       setProgress(action.progress, action.loaded);
       appStore.emitChange();
       break;
+    case 'set-duration':
+      setDuration(action.duration);
+      appStore.emitChange();
+      break;
     default:
 
     // nothing
@@ -71,6 +75,10 @@ function setProgress(progress, loaded) {
   if (loaded) {
     _globalAppState.loaded = loaded;
   }
-}
+};
+
+function setDuration(duration) {
+  _globalAppState.duration = duration;
+};
 
 export default appStore;

@@ -42,6 +42,13 @@ let appActions = {
       loaded: e.loaded,
     });
   },
+
+  onDuration(duration) {
+    appDispatcher.dispatch({
+      actionType: 'set-duration',
+      duration: duration,
+    });
+  },
 };
 
 export default appActions;

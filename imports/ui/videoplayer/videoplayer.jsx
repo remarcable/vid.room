@@ -23,7 +23,7 @@ export default class Videoplayer extends Component {
         duration={ this.props.duration }
         playing={ this.props.playing }
         volume={ this.props.volume }
-        elapsed={ this.props.duration * this.props.played }
+        elapsed={ Math.round(this.props.duration * this.props.played) }
         />
         <Progressbar
         played={ this.props.played }

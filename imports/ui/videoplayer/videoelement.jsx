@@ -15,14 +15,14 @@ export default class VideoElement extends Component {
         height=""
         { ...this.props }
 
-        onStart={ () => console.log('onStart') }
         onPlay={ () => appActions.setPlay(true) }
         onPause={ () => appActions.setPlay(false) }
-        onBuffer={ () => console.log('onBuffer') }
-        onEnded={ () => this.setState({ playing: false }) }
-        onError={ e => console.log('onError', e) }
+        onEnded={ () => appActions.setPlay(false) }
         onProgress={ e => appActions.onProgress(e) }
-        onDuration={ duration => this.setState({ duration }) }
+        onDuration={ duration => appActions.onDuration(duration) }
+        onStart={ () => console.log('onStart') }
+        onBuffer={ () => console.log('onBuffer') }
+        onError={ e => console.log('onError', e) }
         />
       </div>
     );
