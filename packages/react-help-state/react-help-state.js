@@ -9,12 +9,24 @@ class HelpState extends Component {
     return (
       <div className="help-state-component">
         <h1>React Help State</h1>
+        <table>
+          <tbody>
+          </tbody>
+        </table>
       </div>
     );
   }
 }
 
 HelpState.propTypes = {
+  // URL
+  // Playing
+  // Volume
+  // Played
+  // Loaded
+  // Duration
+  // Elapsed
+  // Remaining
 };
 
 Meteor.startup(() => { // Create an element and use it as the root for React component
