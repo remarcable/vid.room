@@ -19,8 +19,5 @@ export default class VideoElement extends Component {
 VideoElement.propTypes = {
   url: React.PropTypes.string.isRequired,
   playing: React.PropTypes.bool.isRequired,
-  volume: React.PropTypes.number,
-};
-VideoElement.defaultProps = {
-  volume: 0.8,
+  volume: React.PropTypes.number.isRequired,
 };

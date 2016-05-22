@@ -6,33 +6,38 @@ import Progressbar from './progressbar.jsx';
 
 // Videoplayer component - displays the video and videocontrol-elements
 export default class Videoplayer extends Component {
-  constructor(props, context) {
-      super(props, context);
-
-      this.state = {
-        playing: false,
-        url: 'https://www.youtube.com/watch?v=99-n42Xb6NQ',
-      };
-    };
-
   render() {
     return (
       <div className="section-videoplayer">
         <div className="room-name-wrapper">
-          <h1 className="room-name">#room-name</h1>
+          <h1 className="room-name">#{ this.props.roomname }</h1>
         </div>
 
         <VideoElement
-        url={ this.state.url }
-        playing={ this.state.playing }
+        url={ this.props.url }
+        playing={ this.props.playing }
+        volume={ this.props.volume }
         />
 
-        <VideoControls />
-        <Progressbar />
+        <VideoControls
+        duration={ this.props.duration }
+        playing={ this.props.playing }
+        volume={ this.props.volume }
+        elapsed={ this.props.duration * this.props.played }
+        />
+        <Progressbar
+        played={ this.props.played }
+        />
       </div>
     );
   }
 }
 
 Videoplayer.propTypes = {
+  url: React.PropTypes.string.isRequired,
+  playing: React.PropTypes.bool.isRequired,
+  volume: React.PropTypes.number.isRequired,
+  duration: React.PropTypes.number.isRequired,
+  played: React.PropTypes.number.isRequired,
+  roomname: React.PropTypes.string.isRequired,
 };
