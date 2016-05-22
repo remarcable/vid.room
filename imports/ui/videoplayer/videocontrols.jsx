@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import Duration from './duration.jsx';
 
+import appActions from '../../api/actions/appactions';
+
 // VideoControls component - displays the control elements for video-playback
 export default class VideoControls extends Component {
   render() {
