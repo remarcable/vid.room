@@ -10,7 +10,6 @@ import Roomsettings from './roomsettings/roomsettings.jsx';
 import Chat from './chat/chat.jsx';
 
 function getAppStateFromStore() {
-  console.log('getting state from store');
   return appStore.getState();
 }
 
@@ -40,8 +39,6 @@ class App extends Component {
   }
 
   _onChange() {
-    console.log('changeEvent!');
-    console.log('this is:', this);
     this.setState(getAppStateFromStore());
   }
 }

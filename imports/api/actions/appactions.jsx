@@ -33,4 +33,4 @@ let appActions = {
   },
 };
 
-window.appActions = appActions;
+export default appActions;
