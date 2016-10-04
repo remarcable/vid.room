@@ -1,22 +1,30 @@
 Package.describe({
   name: 'lightningboss:react-help-state',
+  debugOnly: true,
   version: '0.0.1',
-  // Brief, one-line summary of the package.
-  summary: '',
-  // URL to the Git repository containing the source code for this package.
-  git: '',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
-  documentation: 'README.md'
+  summary: 'React package that displays the state of the application for debugging.',
+  documentation: null,
 });
 
-Package.onUse(function(api) {
+Npm.depends({
+  react: '15.0.1',
+  'react-dom': '15.0.1',
+});
+
+Package.onUse(function (api) {
+  var clientFiles = [
+    'imports/ui/styles/react-help-state.scss',
+  ];
   api.versionsFrom('1.3.2.4');
-  api.use('ecmascript');
-  api.mainModule('react-help-state.js');
+  api.use([
+    'ecmascript',
+    'fourseven:scss',
+  ]);
+  api.addFiles('./client/ui/styles/react-help-state.scss', 'client');
+  api.mainModule('react-help-state.js', 'client');
 });
 
-Package.onTest(function(api) {
+Package.onTest(function (api) {
   api.use('ecmascript');
   api.use('tinytest');
   api.use('lightningboss:react-help-state');

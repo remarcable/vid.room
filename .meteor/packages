@@ -20,3 +20,4 @@ shell-server
 static-html
 seba:minifiers-autoprefixer
 reactive-var
+lightningboss:react-help-state
