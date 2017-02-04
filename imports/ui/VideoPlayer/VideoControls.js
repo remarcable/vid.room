@@ -1,24 +1,28 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+
+import { togglePlay } from '/imports/api/redux/actions';
+
 import Duration from './Duration';
-
-import appActions from '../../api/actions/appactions';
-
-// VideoControls component - displays the control elements for video-playback
 
 const propTypes = {
   duration: PropTypes.number.isRequired,
   elapsed: PropTypes.number.isRequired,
   playing: PropTypes.bool.isRequired,
   volume: PropTypes.number.isRequired,
+  togglePlay: PropTypes.func.isRequired,
 };
+
+const mapDispatchToProps = dispatch => ({
+  togglePlay: () => dispatch(togglePlay()),
+});
 
 const VideoControls = props => (
   <div className="video-controls">
-
     <div className="controls-base controls-left">
       <div
         className={props.playing ? 'icon icon-video-pause' : 'icon icon-video-play'}
-        onClick={appActions.togglePlay}
+        onClick={props.togglePlay}
       />
       <div className="video-time">
         <Duration
@@ -51,4 +55,7 @@ function getVolumeIconClassName(volume) {
   return 'icon icon-video-volume-down';
 }
 
-export default VideoControls;
+export default connect(
+  undefined,
+  mapDispatchToProps,
+)(VideoControls);

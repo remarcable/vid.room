@@ -1,6 +1,7 @@
 import {
   PLAY_VIDEO,
   PAUSE_VIDEO,
+  TOGGLE_PLAY,
   SET_VIDEO_PROGRESS,
   SET_VIDEO_DURATION,
   SET_VIDEO_VOLUME,
@@ -12,6 +13,10 @@ export function playVideo() {
 
 export function pauseVideo() {
   return { type: PAUSE_VIDEO };
+}
+
+export function togglePlay() {
+  return { type: TOGGLE_PLAY };
 }
 
 export function setVideoProgress(progress, loaded) {
