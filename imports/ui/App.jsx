@@ -1,47 +1,22 @@
-import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
-import { Meteor } from 'meteor/meteor';
+import React from 'react';
+import { Provider } from 'react-redux';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import appStore from '../api/stores/stores';
+import store from '/imports/api/redux/store';
 
-import Videoplayer from './videoplayer/videoplayer.jsx';
+import VideoPlayer from './VideoPlayer/VideoPlayer';
 import Roomsettings from './roomsettings/roomsettings.jsx';
 import Chat from './chat/chat.jsx';
 
-function getAppStateFromStore() {
-  return appStore.getState();
-}
-
-// App component - represents the whole app
-class App extends Component {
-  constructor(props, context) {
-      super(props, context);
-      this.state = getAppStateFromStore();
-    };
-
-  componentDidMount() {
-    appStore.addChangeListener(this._onChange.bind(this));
-  }
-
-  componentWillUnmount() {
-    appStore.removeChangeListener(this._onChange.bind(this));
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <Videoplayer { ...this.state }/>
-        <Roomsettings />
-        <Chat />
-      </div>
-    );
-  }
-
-  _onChange() {
-    this.setState(getAppStateFromStore());
-  }
-}
+const App = () => (
+  <Provider store={store}>
+    <div className="container">
+      <VideoPlayer />
+      <Roomsettings />
+      <Chat />
+    </div>
+  </Provider>
+);
 
 App.propTypes = {
 };

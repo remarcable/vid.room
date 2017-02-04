@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Duration from './duration.jsx';
+import Duration from './Duration';
 
 import appActions from '../../api/actions/appactions';
 
