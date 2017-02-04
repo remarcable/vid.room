@@ -1,54 +1,54 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Duration from './Duration';
 
 import appActions from '../../api/actions/appactions';
 
 // VideoControls component - displays the control elements for video-playback
-export default class VideoControls extends Component {
-  render() {
 
-    let volumeIcon;
-    if (this.props.volume >= 0.8) {
-      volumeIcon = 'icon-video-volume-up';
-    } else if (this.props.volume === 0) {
-      volumeIcon = 'icon-video-volume-muted';
-    } else {
-      volumeIcon = 'icon-video-volume-down';
-    }
+const propTypes = {
+  duration: PropTypes.number.isRequired,
+  elapsed: PropTypes.number.isRequired,
+  playing: PropTypes.bool.isRequired,
+  volume: PropTypes.number.isRequired,
+};
 
-    return (
-      <div className="video-controls">
+const VideoControls = props => (
+  <div className="video-controls">
 
-        <div className="controls-base controls-left">
-          <div
-          className={ 'icon ' + (this.props.playing ? 'icon-video-pause' : 'icon-video-play') }
-          onClick={ appActions.togglePlay }
-          />
-          <div className="video-time">
-            <Duration
-            seconds={ this.props.elapsed }
-            /> | <Duration
-            seconds={ this.props.duration }
-            />
-          </div>
-        </div>
-
-        <div className="controls-base controls-right">
-          <div className={ 'icon ' + volumeIcon }></div>
-          <div className="icon icon-video-settings"></div>
-          <div className="icon icon-video-fullscreen"></div>
-        </div>
-
-        <div className="bottom-gradient">
-        </div>
+    <div className="controls-base controls-left">
+      <div
+        className={props.playing ? 'icon icon-video-pause' : 'icon icon-video-play'}
+        onClick={appActions.togglePlay}
+      />
+      <div className="video-time">
+        <Duration
+          seconds={props.elapsed}
+        /> | <Duration
+          seconds={props.duration}
+        />
       </div>
-    );
+    </div>
+
+    <div className="controls-base controls-right">
+      <div className={getVolumeIconClassName(props.volume)} />
+      <div className="icon icon-video-settings" />
+      <div className="icon icon-video-fullscreen" />
+    </div>
+
+    <div className="bottom-gradient" />
+  </div>
+);
+
+VideoControls.propTypes = propTypes;
+
+function getVolumeIconClassName(volume) {
+  if (volume >= 0.8) {
+    return 'icon icon-video-volume-up';
+  } else if (volume === 0) {
+    return 'icon icon-video-volume-muted';
   }
+
+  return 'icon icon-video-volume-down';
 }
 
-VideoControls.propTypes = {
-  duration: React.PropTypes.number.isRequired,
-  elapsed: React.PropTypes.number.isRequired,
-  playing: React.PropTypes.bool.isRequired,
-  volume: React.PropTypes.number.isRequired,
-};
+export default VideoControls;

@@ -5,6 +5,15 @@ import VideoElement from './VideoElement';
 import VideoControls from './VideoControls';
 import ProgressBar from './ProgressBar';
 
+const propTypes = {
+  url: PropTypes.string.isRequired,
+  playing: PropTypes.bool.isRequired,
+  volume: PropTypes.number.isRequired,
+  duration: PropTypes.number.isRequired,
+  played: PropTypes.number.isRequired,
+  roomName: PropTypes.string.isRequired,
+};
+
 const mapStateToProps = state => ({
   url: state.player.url,
   playing: state.player.playing,
@@ -36,13 +45,6 @@ const VideoPlayer = props => (
   </div>
 );
 
-VideoPlayer.propTypes = {
-  url: PropTypes.string.isRequired,
-  playing: PropTypes.bool.isRequired,
-  volume: PropTypes.number.isRequired,
-  duration: PropTypes.number.isRequired,
-  played: PropTypes.number.isRequired,
-  roomName: PropTypes.string.isRequired,
-};
+VideoPlayer.propTypes = propTypes;
 
 export default connect(mapStateToProps)(VideoPlayer);

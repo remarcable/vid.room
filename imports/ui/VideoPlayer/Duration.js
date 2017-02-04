@@ -1,25 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import formatSeconds from './helpers/formatSeconds';
 
-export default function Duration({ className, seconds }) {
-  return (
-    <time dateTime={`P${Math.round(seconds)}S`} className={className}>
-      {format(seconds)}
-    </time>
-  );
-}
+const propTypes = {
+  className: PropTypes.string,
+  seconds: PropTypes.number.isRequired,
+};
 
-function format(seconds) {
-  const date = new Date(0, 0, 0, 0, 0, seconds);
-  const hh = date.getHours();
-  const mm = date.getMinutes();
-  const ss = pad(date.getSeconds());
-  if (hh) {
-    return `${hh}:${pad(mm)}:${ss}`;
-  }
+const Duration = ({ className, seconds }) => (
+  <time dateTime={`P${Math.round(seconds)}S`} className={className}>
+    {formatSeconds(seconds)}
+  </time>
+);
 
-  return `${mm}:${ss}`;
-}
+Duration.propTypes = propTypes;
 
-function pad(string) {
-  return ('0' + string).slice(-2);
-}
+export default Duration;

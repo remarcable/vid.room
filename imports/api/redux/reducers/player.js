@@ -1,7 +1,7 @@
 const initialState = {
   url: 'https://www.youtube.com/watch?v=DOH3eWW_EsY',
   playing: false,
-  played: 0,
+  played: 0, // decimal value
   loaded: 0,
   duration: 0, // seconds
   volume: 0.8,

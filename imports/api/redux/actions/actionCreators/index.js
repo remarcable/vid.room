@@ -1,1 +1,1 @@
-export * from './myaction';
+export * from './VideoPlayer';

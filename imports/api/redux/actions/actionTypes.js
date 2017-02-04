@@ -1,2 +1,5 @@
-// comment
-export const ACTION_TYPE = 'ACTION_TYPE';
+export const PLAY_VIDEO = 'PLAY_VIDEO';
+export const PAUSE_VIDEO = 'PAUSE_VIDEO';
+export const SET_VIDEO_PROGRESS = 'SET_VIDEO_PROGRESS';
+export const SET_VIDEO_DURATION = 'SET_VIDEO_DURATION';
+export const SET_VIDEO_VOLUME = 'SET_VIDEO_VOLUME';
