@@ -30,7 +30,7 @@ const VideoElement = props => (
   <div className="video-element">
     <ReactPlayer
       className="video-frame"
-      // progressFrequency={200}
+      progressFrequency={200}
       width=""
       height=""
       url={props.url}
