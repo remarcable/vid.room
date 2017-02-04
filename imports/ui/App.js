@@ -5,14 +5,14 @@ import { createContainer } from 'meteor/react-meteor-data';
 import store from '/imports/api/redux/store';
 
 import VideoPlayer from './VideoPlayer/VideoPlayer';
-import Roomsettings from './roomsettings/roomsettings.jsx';
-import Chat from './chat/chat.jsx';
+import RoomSettings from './RoomSettings/RoomSettings';
+import Chat from './Chat/Chat';
 
 const App = () => (
   <Provider store={store}>
     <div className="container">
       <VideoPlayer />
-      <Roomsettings />
+      <RoomSettings />
       <Chat />
     </div>
   </Provider>
